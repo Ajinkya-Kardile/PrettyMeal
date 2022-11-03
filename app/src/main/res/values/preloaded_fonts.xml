@@ -2,5 +2,6 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/lemon</item>
+        <item>@font/patua_one</item>
     </array>
 </resources>
