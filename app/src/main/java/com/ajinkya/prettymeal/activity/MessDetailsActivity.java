@@ -58,9 +58,9 @@ public class MessDetailsActivity extends AppCompatActivity {
 
         List<SlideModel> ImagesList = new ArrayList<>();
 //        ImagesList.add(new SlideModel(R.drawable.banner1, ScaleTypes.FIT));
-        ImagesList.add(new SlideModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAf6VMgX30jHN9Lb7SFdxgqdyCwYDOK6eHpg&usqp=CAU", ScaleTypes.FIT));
-        ImagesList.add(new SlideModel("https://i.pinimg.com/736x/da/66/24/da66249a283dafab8488b5c3bddf56f1.jpg", ScaleTypes.FIT));
-        ImagesList.add(new SlideModel("https://i.ytimg.com/vi/mnCDSmooRxA/maxresdefault.jpg", ScaleTypes.FIT));
+        ImagesList.add(new SlideModel("https://img.freepik.com/premium-photo/indian-hindu-veg-thali-also-known-as-food-platter-is-complete-lunch-dinner-meal-closeup-selective-focus_466689-9116.jpg?w=2000", ScaleTypes.FIT));
+        ImagesList.add(new SlideModel("https://i.pinimg.com/736x/0f/13/7d/0f137d2a243f7b63e5716ab4c10c3ee3.jpg", ScaleTypes.FIT));
+        ImagesList.add(new SlideModel("https://spicytamarind.com.au/wp-content/uploads/2021/01/south-indian-thali-2.jpg?ezimgfmt=rs:371x371/rscb6/ngcb6/notWebP", ScaleTypes.FIT));
         imageSlider.setImageList(ImagesList, ScaleTypes.FIT);
 
 

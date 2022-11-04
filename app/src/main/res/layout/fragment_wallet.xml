@@ -374,7 +374,7 @@
             </LinearLayout>
 
             <Button
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Need help?, Contact Us"
@@ -385,6 +385,7 @@
                 android:layout_height="wrap_content"
                 android:text="View History"
                 app:cornerRadius="15dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginHorizontal="10dp"/>
         </LinearLayout>
     </ScrollView>

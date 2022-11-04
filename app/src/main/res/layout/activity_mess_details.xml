@@ -38,19 +38,18 @@
                     android:layout_marginHorizontal="20dp"
                     app:iss_error_image="@color/purple_500"
                     app:iss_period="3000"
-                    app:iss_placeholder="@color/black"
+                    app:iss_placeholder="@color/orange"
+                    app:cornerRadius="18dp"
                     />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageButton
                     android:id="@+id/profile_image"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:src="@drawable/ic_back_arrow" />
+                    android:src="@drawable/ic_back_arrow"
+                    android:contentDescription="TODO" />
             </RelativeLayout>
 
 
