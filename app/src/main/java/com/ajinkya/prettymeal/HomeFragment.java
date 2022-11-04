@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
         MessInfo messInfo1 = new MessInfo();
         messInfo1.setMessName("Gharchi Athawan");
         messInfo1.setMessLocation("Wagholi, Pune-412207");
-        messInfo1.setBannerImgURL("https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-food-seasoning-food-banner-image_169169.jpg");
+        messInfo1.setBannerImgURL("");
         messInfo1.setPrice("$60");
         messInfo1.setVeg_nonVeg("Veg-NonVeg");
         messInfo1.setTodayVegMenu("Chole bhaji , chapati , Upama , Dal , Rice , Salad");
@@ -119,7 +119,7 @@ public class HomeFragment extends Fragment {
         MessInfo messInfo2 = new MessInfo();
         messInfo2.setMessName("Swami Samartha");
         messInfo2.setMessLocation("Wagholi, Pune-412207");
-        messInfo2.setBannerImgURL("https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-food-seasoning-food-banner-image_169169.jpg");
+        messInfo2.setBannerImgURL("https://img.restaurantguru.com/r696-Hotel-Saravana-Bhavan-food-2021-09-38.jpg");
         messInfo2.setPrice("$60");
         messInfo2.setVeg_nonVeg("PureVeg");
         messInfo2.setTodayVegMenu("Chole bhaji , chapati , Upama , Dal , Rice , Salad");
@@ -130,7 +130,7 @@ public class HomeFragment extends Fragment {
         MessInfo messInfo3 = new MessInfo();
         messInfo3.setMessName("Jay Malhar");
         messInfo3.setMessLocation("Wagholi, Pune-412207");
-        messInfo3.setBannerImgURL("https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-food-seasoning-food-banner-image_169169.jpg");
+        messInfo3.setBannerImgURL("");
         messInfo3.setPrice("$60");
         messInfo3.setVeg_nonVeg("Veg-NonVeg");
         messInfo3.setTodayVegMenu("Chole bhaji , chapati , Upama , Dal , Rice , Salad");

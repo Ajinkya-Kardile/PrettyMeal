@@ -70,13 +70,23 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:textColor="@color/blackLite"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"/>
+
+    <Button
         android:id="@+id/LoginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         app:cornerRadius="15dp"
-        android:layout_marginTop="15dp"
         android:paddingHorizontal="60dp"
         android:text="Log In"/>
 

@@ -85,6 +85,7 @@
             android:hint="Mobile No"
             android:inputType="phone"
             android:autofillHints="phone"
+            android:maxLength="10"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -118,7 +119,7 @@
             />
 
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/RegisterBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

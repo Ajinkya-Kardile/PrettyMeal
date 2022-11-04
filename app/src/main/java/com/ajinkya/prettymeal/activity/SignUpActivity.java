@@ -4,13 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.ajinkya.prettymeal.R;
 import com.google.android.material.button.MaterialButton;
 
 public class SignUpActivity extends AppCompatActivity {
-    private MaterialButton RegisterBtn;
+    private Button RegisterBtn;
     private TextView LoginPageRedirecter;
 
     @Override
