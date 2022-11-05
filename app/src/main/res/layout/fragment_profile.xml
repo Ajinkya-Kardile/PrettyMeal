@@ -34,10 +34,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/lemon"
+                android:fontFamily="@font/patua_one"
                 android:text="Ajinkya Kardile"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"

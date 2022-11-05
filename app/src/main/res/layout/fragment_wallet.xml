@@ -29,6 +29,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:layout_marginTop="8dp"
                         android:text="My Current Plan"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
@@ -38,7 +39,7 @@
                         android:gravity="center"
                         android:text="No Active Plan"
                         android:textColor="@color/orange"
-                        android:textSize="24sp"
+                        android:textSize="20sp"
                         android:fontFamily="@font/patua_one"
                         android:textStyle="bold"/>
                     <View
@@ -74,7 +75,7 @@
                                     android:text="0"
                                     android:textSize="30sp"
                                     android:textStyle="bold"
-                                    android:fontFamily="@font/lemon"
+                                    android:fontFamily="@font/patua_one"
                                     android:textColor="@color/orange"
                                     android:gravity="center"/>
                                 <TextView
@@ -169,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Get Your Plan Now!"
-                android:fontFamily="@font/lemon"
+                android:fontFamily="@font/patua_one"
                 android:textSize="18dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"/>
@@ -205,7 +206,7 @@
                             android:textSize="30sp"
                             android:background="#FAEDE2"
                             android:textStyle="bold"
-                            android:fontFamily="@font/lemon"
+                            android:fontFamily="@font/patua_one"
                             android:textColor="@color/orange"
                             android:gravity="center"/>
                         <TextView
@@ -217,7 +218,7 @@
                             android:background="#FAEDE2"
                             android:textStyle="bold"
                             android:paddingBottom="5dp"
-                            android:fontFamily="@font/lemon"
+                            android:fontFamily="@font/patua_one"
                             android:textColor="@color/orange"
                             android:gravity="center"/>
                         <View
@@ -300,7 +301,7 @@
                             android:textSize="30sp"
                             android:background="#FAEDE2"
                             android:textStyle="bold"
-                            android:fontFamily="@font/lemon"
+                            android:fontFamily="@font/patua_one"
                             android:textColor="@color/orange"
                             android:gravity="center"/>
                         <TextView
@@ -312,7 +313,7 @@
                             android:background="#FAEDE2"
                             android:textStyle="bold"
                             android:paddingBottom="5dp"
-                            android:fontFamily="@font/lemon"
+                            android:fontFamily="@font/patua_one"
                             android:textColor="@color/orange"
                             android:gravity="center"/>
                         <View
@@ -377,7 +378,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Need help?, Contact Us"
+                android:text="Need help? Contact Us"
                 app:cornerRadius="15dp"
                 android:layout_marginHorizontal="10dp"/>
             <Button

@@ -42,10 +42,13 @@
                     app:cornerRadius="18dp"
                     />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/profile_image"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:src="@drawable/ic_back_arrow"
