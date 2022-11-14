@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activity.businessAccount.BusinessLoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="80dp"
-                android:text="Let's Eat Something"
+                android:text="Hey... Welcome!"
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Log in and grab your Pretty Meal"
+                android:text="Log in and Enhance your business"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -82,19 +82,19 @@
             android:textColor="@color/blackLite" />
 
         <Button
-            android:id="@+id/LoginBtn"
+            android:id="@+id/BusinessLoginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingHorizontal="60dp"
-            android:text="Log In"
+            android:layout_marginHorizontal="20dp"
+            android:text="Log In Business Account"
             app:cornerRadius="15dp" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
 
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:text="Don't have an account? "
+                android:text="Don't have a business Account? "
                 android:textColor="@color/blackLite" />
 
             <TextView
@@ -114,6 +114,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true"
+                android:textStyle="bold"
                 android:foreground="?attr/selectableItemBackground"
                 android:text="Click here to Register"
                 android:textColor="@color/orange" />
@@ -121,35 +122,6 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="170dp"
-            android:orientation="horizontal">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:text="Are you mess owner? "
-                android:textColor="@color/blackLite" />
-
-            <TextView
-                android:id="@+id/LoginAsMessOwner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:text="Click here"
-                android:textColor="@color/orange" />
-
-        </LinearLayout>
 
 
     </LinearLayout>

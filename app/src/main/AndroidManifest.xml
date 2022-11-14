@@ -15,6 +15,34 @@
         android:theme="@style/Theme.PreetyMeal"
         tools:targetApi="31">
         <activity
+            android:name=".activity.businessAccount.BusinessHomePage"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activity.businessAccount.MessInfoRegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activity.businessAccount.BusinessRegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activity.businessAccount.BusinessLoginActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity.SplashScreenActivity"
             android:exported="false"
             android:screenOrientation="portrait">

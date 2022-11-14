@@ -50,6 +50,7 @@ public class MessDetailsActivity extends AppCompatActivity {
 //        String VegNonVegType = bundle.getString("NonVegMenu");
 //        String MessOwnerName = bundle.getString("NonVegMenu");
 
+
         vegList = new ArrayList<>();
         nonVegList = new ArrayList<>();
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LoginActivity">
+    android:orientation="vertical"
+    tools:context=".activity.businessAccount.BusinessRegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,19 +28,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="80dp"
-                android:text="Let's Eat Something"
+                android:layout_marginTop="60dp"
+                android:text="Want to Grow your Business?"
                 android:textColor="@color/white"
-                android:textSize="28sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Log in and grab your Pretty Meal"
+                android:text="You are on the right place,"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textStyle="bold"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Only you need to connect with us."
+                android:textColor="@color/white"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +60,40 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email Id" />
+                android:autofillHints="name"
+                android:hint="Name"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="emailAddress"
+                android:hint="Email Id"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="phone"
+                android:hint="Mobile No"
+                android:inputType="phone"
+                android:maxLength="10" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,29 +107,43 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword"/>
+                android:hint="Set Password"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Conform Password"
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
             android:layout_margin="10dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:text="Forgot Password?"
-            android:textColor="@color/blackLite" />
+            android:textStyle="bold"
+            android:textSize="10.8sp"
+            android:text="Note: If you Already having normal user account and wan't to use the same email as a business account, then please enter the same password in set Password field."
+            android:textColor="@color/blackLite"
+            tools:ignore="SmallSp" />
 
         <Button
-            android:id="@+id/LoginBtn"
+            android:id="@+id/RegisterBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:paddingHorizontal="60dp"
-            android:text="Log In"
+            android:text="Next"
             app:cornerRadius="15dp" />
 
 
@@ -103,11 +159,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:text="Don't have an account? "
+                android:text="Already have an account? "
                 android:textColor="@color/blackLite" />
 
             <TextView
-                android:id="@+id/RegisterPageRedirect"
+                android:id="@+id/LoginPageRedirect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -115,38 +171,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="Click here to Register"
-                android:textColor="@color/orange" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="170dp"
-            android:orientation="horizontal">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:text="Are you mess owner? "
-                android:textColor="@color/blackLite" />
-
-            <TextView
-                android:id="@+id/LoginAsMessOwner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:text="Click here"
+                android:text="Click here Log In"
                 android:textColor="@color/orange" />
 
         </LinearLayout>
