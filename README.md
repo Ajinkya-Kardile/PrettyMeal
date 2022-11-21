@@ -1,5 +1,26 @@
-# PrettyMeal
-### A food application that provides multiple mess option in a single monthly plan.
-It is an android based application that helps people to get best quality and pretty meal at affordable plan.
 
+# PrettyMeal- All in one mess application
+
+A food application that provides multiple mess option in a single monthly plan.
+
+## Features
+
+- Daily Updated food menu
+- provide hotel locations on map
+- contact details / support
+- easy to use
+
+
+## Screenshots
+
+<img src="/Screenshots/Login%20page.jpeg?raw=true" width="360" height="780"> <img src="/Screenshots//Registration%20page.jpeg?raw=true" width="360" height="780"> 
+<img src="/Screenshots/Home%20screen1.jpeg?raw=true" width="360" height="780">
+<img src="/Screenshots/Home%20screen%202.jpeg?raw=true" width="360" height="780">
+<img src="/Screenshots/Profile%20page.jpeg?raw=true" width="360" height="780">
+<img src="/Screenshots/Screenshot%20planes.jpeg?raw=true" width="360" height="780">
+
+
+## Support
+
+For support, email fake@fake.com or join our Slack channel.
 
