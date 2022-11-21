@@ -29,6 +29,6 @@ A food application that provides multiple mess option in a single monthly plan.
 
 ## Note -
 
-The application is in development phase. 
+The application is not fully developed yet. It is in development phase. 
 
 
