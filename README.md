@@ -20,7 +20,8 @@ A food application that provides multiple mess option in a single monthly plan.
 <img src="/Screenshots/Screenshot%20planes.jpeg?raw=true" width="360" height="780">
 
 
-## Support
+## Note -
 
-For support, email fake@fake.com or join our Slack channel.
+The application is on development phase. 
+
 
