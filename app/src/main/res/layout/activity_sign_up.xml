@@ -46,10 +46,12 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
+            android:id="@+id/customerNameRegLayout"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/customerNameReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="name"
@@ -61,10 +63,12 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
+            android:id="@+id/customerEmailRegLayout"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/customerEmailReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="emailAddress"
@@ -76,15 +80,16 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
+            android:id="@+id/customerMobileRegLayout"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/customerMobileReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="phone"
                 android:hint="Mobile No"
-                android:inputType="phone"
+                android:inputType="number"
                 android:maxLength="10" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -92,11 +97,13 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
+            android:id="@+id/customerPasswordRegLayout"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/customerPasswordReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Set Password"
@@ -108,9 +115,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/customerPasswordConformLayout"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/customerPasswordConform"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Conform Password"
@@ -119,7 +128,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/RegisterBtn"
+            android:id="@+id/customerRegisterBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
