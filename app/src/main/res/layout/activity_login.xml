@@ -43,13 +43,14 @@
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customerEmailLoginLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/LoginEmail"
+                android:id="@+id/customerEmailLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email Id" />
@@ -57,6 +58,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customerPasswordLoginLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,14 +66,16 @@
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/customerPasswordLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            android:id="@+id/customerForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -83,7 +87,7 @@
             android:textColor="@color/blackLite" />
 
         <Button
-            android:id="@+id/LoginBtn"
+            android:id="@+id/customerLoginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -125,8 +129,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="170dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
 

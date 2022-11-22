@@ -51,6 +51,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.1'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.ms-square:expandableTextView:0.1.4'
+    implementation 'com.github.f0ris.sweetalert:library:1.6.2'
 
 
 
