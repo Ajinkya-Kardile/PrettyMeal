@@ -121,7 +121,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void StartLogin(String email, String password) {
-        ArrayList<String> UserType = new ArrayList<>();
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
