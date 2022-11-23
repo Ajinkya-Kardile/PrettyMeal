@@ -126,15 +126,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textStyle="bold"
-            android:textSize="10.8sp"
-            android:text="Note: If you Already having normal user account and wan't to use the same email as a business account, then please enter the same password in set Password field."
-            android:textColor="@color/blackLite"
-            tools:ignore="SmallSp" />
+
 
         <Button
             android:id="@+id/RegisterBtn"

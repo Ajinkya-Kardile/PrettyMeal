@@ -129,6 +129,7 @@ public class SignUpActivity extends AppCompatActivity {
         LoginPageRedirect.setOnClickListener(View -> {
             Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 
@@ -185,7 +186,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         // Store user data in database
-        DatabaseReference userInfoReference = FirebaseDatabase.getInstance().getReference().child("ClientApplication").child("Users").child(Current_Uid).child("UserInfo");
+        DatabaseReference userInfoReference = FirebaseDatabase.getInstance().getReference().child("Client_Application").child("Users").child(Current_Uid).child("UserInfo");
         Log.e(TAG, "RegisterPhone: " + userInfoReference);
         HashMap<String, String> user = new HashMap<>();
         user.put("Name", name);

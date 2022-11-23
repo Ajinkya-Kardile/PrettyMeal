@@ -5,17 +5,23 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ajinkya.prettymeal.R;
 import com.ajinkya.prettymeal.activity.businessAccount.BusinessLoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -37,11 +43,11 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class LoginActivity extends AppCompatActivity {
 
     private Button LoginBtn;
-    private TextView RegisterPageNavigate, LoginAsMessOwner;
+    private TextView PasswordReset, RegisterPageNavigate, LoginAsMessOwner;
     private TextInputEditText EtEmail, EtPassword;
     private TextInputLayout layoutEmail, layoutPassword;
     private String Email, Password;
-    private ProgressDialog progressDialog;
+    private ProgressDialog progressDialog, loadingBar;
     private FirebaseAuth mAuth;
 
     @Override
@@ -65,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         layoutPassword = findViewById(R.id.customerPasswordLoginLayout);
 
         // initializing buttons/ hyperlinked text
+        PasswordReset = findViewById(R.id.customerForgotPassword);
         LoginBtn = findViewById(R.id.customerLoginBtn);
         RegisterPageNavigate = findViewById(R.id.RegisterPageRedirect);
         LoginAsMessOwner = findViewById(R.id.LoginAsMessOwner);
@@ -102,6 +109,56 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void Buttons() {
+        PasswordReset.setOnClickListener(View ->{
+            AlertDialog.Builder builder=new AlertDialog.Builder(this)
+                    .setTitle("Forgot Password...?")
+                    .setCancelable(false)
+                    .setMessage("Please provide your registered email.")
+                    .setIcon(R.drawable.ic_profile);
+            LinearLayout linearLayout=new LinearLayout(this);
+            final EditText editText= new EditText(this);
+
+            // write the email using which you registered
+            editText.setHint("Enter Registered Email");
+            editText.setMinEms(16);
+            editText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            linearLayout.addView(editText);
+            linearLayout.setPadding(10,10,10,10);
+            builder.setView(linearLayout);
+
+
+            // Click on Recover and a email will be sent to your registered email id
+            builder.setPositiveButton("Reset Password", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String email = editText.getText().toString().trim();
+
+                    String EmailRegex = "^(.+)@(.+)$";
+                    Pattern EmailPattern = Pattern.compile(EmailRegex);
+                    Matcher EmailMatcher = EmailPattern.matcher(email);
+                    if(!email.isEmpty() && EmailMatcher.matches()){
+                        beginRecovery(email);
+                    }else{
+                        new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Invalid Email..!")
+                                .setContentText("Please provide Correct Email! ")
+                                .show();
+                        Log.e(TAG, "onClick: Sorry, You Not provided Email");
+                    }
+
+                }
+            });
+
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.create().show();
+
+        });
+
         LoginBtn.setOnClickListener(View -> {
             if (IsTextFieldValidate()) {
                 progressDialog.show();
@@ -112,11 +169,49 @@ public class LoginActivity extends AppCompatActivity {
         RegisterPageNavigate.setOnClickListener(View -> {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
+            finish();
         });
 
         LoginAsMessOwner.setOnClickListener(View -> {
             Intent intent = new Intent(LoginActivity.this, BusinessLoginActivity.class);
             startActivity(intent);
+            finish();
+        });
+    }
+
+    private void beginRecovery(String email) {
+        loadingBar=new ProgressDialog(this);
+        loadingBar.setMessage("Sending Email....");
+        loadingBar.setCanceledOnTouchOutside(false);
+        loadingBar.show();
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                loadingBar.dismiss();
+                if(task.isSuccessful())
+                {
+                    new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText("Successfully sent mail")
+                            .setContentText("Password reset link sent on your email.\nIf mail not visible inside Inbox then check the Spam folder")
+                            .setConfirmText("OK")
+                            .setConfirmClickListener(sDialog -> {
+                                sDialog.dismissWithAnimation();
+                            })
+                            .show();
+                }
+                else {
+                    new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Invalid Email..!")
+                            .setContentText("Please provide Registered Email! ")
+                            .show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                loadingBar.dismiss();
+                Toast.makeText(LoginActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+            }
         });
     }
 
