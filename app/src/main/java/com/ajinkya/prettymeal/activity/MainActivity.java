@@ -18,6 +18,7 @@ import com.ajinkya.prettymeal.ProfileFragment;
 import com.ajinkya.prettymeal.R;
 import com.ajinkya.prettymeal.WalletFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,26 +40,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @SuppressLint("NonConstantResourceId")
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
+    @SuppressLint("NonConstantResourceId")
+    private OnNavigationItemSelectedListener navListener = item -> {
+        Fragment selectedFragment = null;
 
-            switch (item.getItemId()){
-                case R.id.id_home:
-                    selectedFragment = new HomeFragment();
-                    break;
-                case R.id.id_wallet:
-                    selectedFragment = new WalletFragment();
-                    break;
-                case R.id.id_profile:
-                    selectedFragment = new ProfileFragment();
+        switch (item.getItemId()){
+            case R.id.id_home:
+                selectedFragment = new HomeFragment();
+                break;
+            case R.id.id_wallet:
+                selectedFragment = new WalletFragment();
+                break;
+            case R.id.id_profile:
+                selectedFragment = new ProfileFragment();
 
-            }
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
-            return true;
         }
+
+        assert selectedFragment != null;
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+        return true;
     };
 }

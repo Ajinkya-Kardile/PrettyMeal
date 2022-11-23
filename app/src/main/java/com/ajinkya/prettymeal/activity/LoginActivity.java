@@ -194,9 +194,7 @@ public class LoginActivity extends AppCompatActivity {
                             .setTitleText("Successfully sent mail")
                             .setContentText("Password reset link sent on your email.\nIf mail not visible inside Inbox then check the Spam folder")
                             .setConfirmText("OK")
-                            .setConfirmClickListener(sDialog -> {
-                                sDialog.dismissWithAnimation();
-                            })
+                            .setConfirmClickListener(SweetAlertDialog::dismissWithAnimation)
                             .show();
                 }
                 else {
@@ -206,12 +204,9 @@ public class LoginActivity extends AppCompatActivity {
                             .show();
                 }
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                loadingBar.dismiss();
-                Toast.makeText(LoginActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
-            }
+        }).addOnFailureListener(e -> {
+            loadingBar.dismiss();
+            Toast.makeText(LoginActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
         });
     }
 
