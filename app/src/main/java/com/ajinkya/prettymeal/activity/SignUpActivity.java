@@ -194,6 +194,7 @@ public class SignUpActivity extends AppCompatActivity {
         user.put("PhoneNo", mobileNo);
         user.put("ProfileImg", "");
         user.put("Membership", "NA");
+        user.put("Address", "");
 
         userInfoReference.setValue(user).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

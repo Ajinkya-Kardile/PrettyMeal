@@ -19,7 +19,7 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image1"
+                android:id="@+id/CustomerProfile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -29,7 +29,7 @@
                 app:civ_border_width="2dp" />
 
             <TextView
-                android:id="@+id/UserName"
+                android:id="@+id/CustomerProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -40,6 +40,7 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/CustomerProfileEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -208,6 +209,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/CustomerDetailNumber"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -237,6 +239,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/CustomerDetailEmail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -246,13 +249,6 @@
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
-                        <!--                        WalletBalance-->
-                        <!--                        TokenLeft-->
-                        <!--                        PlanType-->
-                        <!--                        EditProfile-->
-                        <!--                        ChangePassword-->
-                        <!--                        LogOut-->
-
 
                     </LinearLayout>
 
@@ -261,6 +257,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/CustomerEditProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -277,6 +274,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/CustomerChangePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -293,6 +291,7 @@
                 android:focusable="true" />
 
             <TextView
+                android:id="@+id/CustomerAboutUs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -309,7 +308,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/LogoutUser"
+                android:id="@+id/CustomerLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
