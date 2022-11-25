@@ -157,8 +157,8 @@ public class ProfileFragment extends Fragment {
         new SweetAlertDialog(requireContext(), SweetAlertDialog.WARNING_TYPE)
                 .setTitleText("Are you sure?")
                 .setContentText("Do you really want to exit..?")
-                .setConfirmText("Yes,Log Out!")
-                .setCancelButton("No", new SweetAlertDialog.OnSweetClickListener() {
+                .setConfirmText("YES, LOG OUT!")
+                .setCancelButton("NO", new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                         sDialog.dismissWithAnimation();

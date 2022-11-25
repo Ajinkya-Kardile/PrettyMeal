@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.ajinkya.prettymeal.R;
@@ -24,6 +25,7 @@ public class MessDetailsActivity extends AppCompatActivity {
     private RecyclerView vegMenuRecyclerView, nonVegMenuRecyclerView;
     private LinearLayout nonVegMenuLayout;
     ArrayList<String> vegList, nonVegList;
+    private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,11 @@ public class MessDetailsActivity extends AppCompatActivity {
         vegMenuRecyclerView = findViewById(R.id.RecyclerViewVegFoodMenu);
         nonVegMenuRecyclerView = findViewById(R.id.RecyclerViewNonVegFoodMenu);
         nonVegMenuLayout = findViewById(R.id.NonVegMenu);
+        backButton = findViewById(R.id.profile_image);
+
+        backButton.setOnClickListener(View->{
+            onBackPressed();
+        });
 
 
         Bundle bundle = getIntent().getExtras();

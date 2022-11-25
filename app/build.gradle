@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -53,6 +54,12 @@ dependencies {
     implementation 'com.ms-square:expandableTextView:0.1.4'
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'
     implementation "com.airbnb.android:lottie:5.2.0"
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'com.adevinta.android:leku:10.0.2'
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+
 
 
 

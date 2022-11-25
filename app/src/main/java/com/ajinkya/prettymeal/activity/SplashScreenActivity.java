@@ -35,7 +35,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        int SPLASH_SCREEN_TIME_OUT = 4000;
+        int SPLASH_SCREEN_TIME_OUT = 2000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
