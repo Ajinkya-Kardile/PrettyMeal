@@ -50,9 +50,10 @@ public class AddressPicker extends AppCompatActivity {
     private Button LocationPickerBtn, UseLocationBtn, CancelBtn;
     private TextInputEditText AddressLine1, AddressLine2;
     private TextInputLayout AddressLine1Layout, AddressLine2Layout;
-    private String AddressLine_1, AddressLine_2, FullAddress;
+    private String AddressLine_1 = "", AddressLine_2 = "", FullAddress;
     private double Latitude = 0.0;
     private double Longitude = 0.0;
+    private double resultLat, resultLng;
     private boolean ResultStatus;
     private LocationManager locationManager;
     private GpsTracker gpsTracker;
@@ -62,17 +63,17 @@ public class AddressPicker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address_picker);
 
-//        ParseData();
+        ParseData();
         Initialize();
         Permissions();
         Buttons();
 
     }
 
-//    private void ParseData() {
-//        Intent intent = new Intent();
-//        boolean cancelBtnStatus = intent.getBooleanExtra("CancelBtnEnable",true);
-//    }
+    private void ParseData() {
+        Intent intent = new Intent();
+        boolean cancelBtnStatus = intent.getBooleanExtra("CancelBtnEnable", true);
+    }
 
     private void Permissions() {
         try {
@@ -156,6 +157,7 @@ public class AddressPicker extends AppCompatActivity {
         }
     }
 
+
     public void buttonSwitchGPS_ON() {
 
         LocationRequest locationRequest = LocationRequest.create();
@@ -209,8 +211,6 @@ public class AddressPicker extends AppCompatActivity {
                                 if (gpsTracker.canGetLocation()) {
                                     Latitude = gpsTracker.getLatitude();
                                     Longitude = gpsTracker.getLongitude();
-                                    AddressLine1Layout.setVisibility(View.VISIBLE);
-                                    AddressLine1.setText(String.valueOf(Latitude + "," + Longitude));
                                 } else {
                                     gpsTracker.showSettingsAlert();
                                 }
@@ -270,28 +270,54 @@ public class AddressPicker extends AppCompatActivity {
         if (resultCode == Activity.RESULT_OK && data != null) {
             Log.d("RESULT****", "OK");
             if (requestCode == 1) {
-                double latitude = data.getDoubleExtra("latitude", 0.0);
-                Log.e("LATITUDE****", Double.toString(latitude));
-                double longitude = data.getDoubleExtra("longitude", 0.0);
-                Log.e("LONGITUDE****", Double.toString(longitude));
-                AddressLine2Layout.setVisibility(View.VISIBLE);
-                AddressLine2.setText(String.valueOf(latitude + "," + longitude));
+                resultLat = data.getDoubleExtra("latitude", 0.0);
+                Log.e("LATITUDE****", Double.toString(resultLat));
+                resultLng = data.getDoubleExtra("longitude", 0.0);
+                Log.e("LONGITUDE****", Double.toString(resultLng));
 
-                String address = data.getStringExtra("location_address");
-                Log.e("ADDRESS****", address.toString());
-                String postalcode = data.getStringExtra("zipcode");
-                Log.e("POSTALCODE****", postalcode.toString());
 
                 Parcelable fullAddress = data.getParcelableExtra("address");
-                Log.e("FULL ADDRESS****", fullAddress.toString());
                 List<String> list = Arrays.asList(fullAddress.toString().split("\""));
-                Log.e(TAG, "onActivityResult: " + list.get(1));
+                Log.e(TAG, "fullAddress " + list.get(1));
+                String addressLine = list.get(1);
+                List<String> addressPart = Arrays.asList(addressLine.split(","));
+                int size = addressPart.size();
+                AddressLine_1 = "";
+                if (size >= 4) {
+                    AddressLine_2 = addressPart.get(size - 4).replaceFirst(" ", "") + "," + addressPart.get(size - 3) + "," + addressPart.get(size - 2) + "," + addressPart.get(size - 1);
+                    Log.e(TAG, "addressLine2 " + AddressLine_2);
+                    AddressLine2Layout.setVisibility(View.VISIBLE);
+                    AddressLine2.setText(AddressLine_2);
+
+
+                    for (int i = 5; i <= size; i++) {
+                        AddressLine_1 = addressPart.get(size - i) + "," + AddressLine_1;
+                    }
+
+                    AddressLine1Layout.setVisibility(View.VISIBLE);
+                    AddressLine1.setText(String.valueOf(AddressLine_1));
+
+                } else if (size >= 2) {
+                    AddressLine_2 = addressPart.get(size - 2).replaceFirst(" ", "") + "," + addressPart.get(size - 1);
+                    Log.e(TAG, "addressLine2 " + AddressLine_2);
+                    AddressLine2Layout.setVisibility(View.VISIBLE);
+                    AddressLine2.setText(AddressLine_2);
+
+                    for (int i = 3; i <= size; i++) {
+                        AddressLine_1 = "," + addressPart.get(size - i) + AddressLine_1;
+                    }
+                    if (!AddressLine_1.isEmpty()) {
+                        AddressLine_1.replaceFirst(",", "");
+                    }
+                    AddressLine1Layout.setVisibility(View.VISIBLE);
+                    AddressLine1.setText(String.valueOf(AddressLine_1));
+                }
+
             }
         }
         if (resultCode == Activity.RESULT_CANCELED) {
             Log.e("RESULT****", "CANCELLED");
         }
     }
-
 
 }
