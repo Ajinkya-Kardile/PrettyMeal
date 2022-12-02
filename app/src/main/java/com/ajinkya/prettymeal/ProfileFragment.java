@@ -98,7 +98,6 @@ public class ProfileFragment extends Fragment {
                 userInfo.setUserName(Objects.requireNonNull(dataSnapshot.child("Name").getValue()).toString());
                 userInfo.setUserEmail(Objects.requireNonNull(dataSnapshot.child("Email").getValue()).toString());
                 userInfo.setUserMobileNo(Objects.requireNonNull(dataSnapshot.child("PhoneNo").getValue()).toString());
-                userInfo.setUserAddress(Objects.requireNonNull(dataSnapshot.child("Address").getValue()).toString());
                 userInfo.setUserMembership(Objects.requireNonNull(dataSnapshot.child("Membership").getValue()).toString());
 
                 // Set data to Views

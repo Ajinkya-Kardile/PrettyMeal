@@ -3,6 +3,7 @@ package com.ajinkya.prettymeal.activity;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
@@ -14,15 +15,12 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ajinkya.prettymeal.HomeFragment;
 import com.ajinkya.prettymeal.ProfileFragment;
@@ -41,6 +39,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private TextView LocationTextView;
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationManager locationManager;
     private static final int REQUEST_CHECK_SETTINGS = 0x1;
-    private GpsTracker gpsTracker;
+    private DatabaseReference userInfoRef;
 
 
     @Override
@@ -86,14 +90,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         //location requirements
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        //firebase ==>
+        String Current_Uid = FirebaseAuth.getInstance().getUid();
+        assert Current_Uid != null;
+        userInfoRef = FirebaseDatabase.getInstance().getReference().child("Client_Application").child("Users").child(Current_Uid).child("UserAddress");
+
     }
 
     private void Buttons() {
         LocationTextView.setOnClickListener(View->{
             Intent intent = new Intent(MainActivity.this,AddressPicker.class);
+            intent.putExtra("CancelBtnEnable",true);
             startActivity(intent);
+            startActivityForResult(intent,10);
         });
     }
 
@@ -203,6 +214,34 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(MainActivity.this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         44);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==10 &&  resultCode==RESULT_OK){
+            if (data!=null){
+
+                // Get data form result ==>
+                double Latitude = data.getExtras().getDouble("Latitude",0.0);
+                double Longitude = data.getExtras().getDouble("Longitude",0.0);
+                String AddressLine1 = data.getExtras().getString("AddressLine1","India");
+                String AddressLine2 = data.getExtras().getString("AddressLine2","India");
+                String FullAddress = data.getExtras().getString("FullAddress","India");
+                String ShortAddress = data.getExtras().getString("ShortAddress","India");
+
+                // Display Address to textView==>
+                LocationTextView.setText(ShortAddress);
+
+                userInfoRef.child("Latitude").setValue(String.valueOf(Latitude));
+                userInfoRef.child("Latitude").setValue(String.valueOf(Longitude));
+                userInfoRef.child("AddressLine1").setValue(AddressLine1);
+                userInfoRef.child("AddressLine2").setValue(AddressLine2);
+                userInfoRef.child("FullAddress").setValue(FullAddress);
+                userInfoRef.child("ShortAddress").setValue(ShortAddress);
+
             }
         }
     }

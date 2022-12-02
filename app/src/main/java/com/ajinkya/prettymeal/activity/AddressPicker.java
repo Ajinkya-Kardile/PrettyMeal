@@ -4,6 +4,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import static com.ajinkya.prettymeal.BuildConfig.MAPS_API_KEY;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,15 +48,14 @@ import java.util.Objects;
 public class AddressPicker extends AppCompatActivity {
     private static final int REQUEST_CHECK_SETTINGS = 0x1;
     private final int MAP_BUTTON_REQUEST_CODE = 1;
-    FusedLocationProviderClient fusedLocationProviderClient;
     private Button LocationPickerBtn, UseLocationBtn, CancelBtn;
     private TextInputEditText AddressLine1, AddressLine2;
     private TextInputLayout AddressLine1Layout, AddressLine2Layout;
-    private String AddressLine_1 = "", AddressLine_2 = "", FullAddress;
+    private String AddressLine_1 = "", AddressLine_2 = "", FullAddress, ShortAddress;
     private double Latitude = 0.0;
     private double Longitude = 0.0;
     private double resultLat, resultLng;
-    private boolean ResultStatus;
+    private boolean cancelBtnStatus;
     private LocationManager locationManager;
     private GpsTracker gpsTracker;
 
@@ -72,7 +73,7 @@ public class AddressPicker extends AppCompatActivity {
 
     private void ParseData() {
         Intent intent = new Intent();
-        boolean cancelBtnStatus = intent.getBooleanExtra("CancelBtnEnable", true);
+        cancelBtnStatus = intent.getBooleanExtra("CancelBtnEnable", true);
     }
 
     private void Permissions() {
@@ -97,12 +98,6 @@ public class AddressPicker extends AppCompatActivity {
     }
 
     private void Initialize() {
-        //Toolbar setup -->
-        Toolbar toolbar = findViewById(R.id.AddressPickerToolbar);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
         //Other views -->
         LocationPickerBtn = findViewById(R.id.PickMyLocBtn);
@@ -114,8 +109,19 @@ public class AddressPicker extends AppCompatActivity {
         AddressLine2Layout = findViewById(R.id.AddressLine2Layout);
 
 
+        // back button visibility ==>
+        if (!cancelBtnStatus){
+            CancelBtn.setVisibility(View.GONE);
+        }else{
+            //Toolbar setup -->
+            Toolbar toolbar = findViewById(R.id.AddressPickerToolbar);
+            setSupportActionBar(toolbar);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            toolbar.setNavigationOnClickListener(view -> onBackPressed());
+        }
+
         //location requirements
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
     }
@@ -134,11 +140,10 @@ public class AddressPicker extends AppCompatActivity {
                     .build(this);
 
             startActivityForResult(locationPickerIntent, MAP_BUTTON_REQUEST_CODE);
-
         });
 
         UseLocationBtn.setOnClickListener(View -> {
-
+            SubmitResult();
         });
 
         CancelBtn.setOnClickListener(View -> {
@@ -264,12 +269,17 @@ public class AddressPicker extends AppCompatActivity {
     }
 
 
+
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK && data != null) {
             Log.d("RESULT****", "OK");
             if (requestCode == 1) {
+
+                UseLocationBtn.setVisibility(View.VISIBLE);
+
                 resultLat = data.getDoubleExtra("latitude", 0.0);
                 Log.e("LATITUDE****", Double.toString(resultLat));
                 resultLng = data.getDoubleExtra("longitude", 0.0);
@@ -278,17 +288,16 @@ public class AddressPicker extends AppCompatActivity {
 
                 Parcelable fullAddress = data.getParcelableExtra("address");
                 List<String> list = Arrays.asList(fullAddress.toString().split("\""));
-                Log.e(TAG, "fullAddress " + list.get(1));
+                Log.e(TAG, "fullAddress ==> " + list.get(1));
                 String addressLine = list.get(1);
                 List<String> addressPart = Arrays.asList(addressLine.split(","));
                 int size = addressPart.size();
                 AddressLine_1 = "";
                 if (size >= 4) {
                     AddressLine_2 = addressPart.get(size - 4).replaceFirst(" ", "") + "," + addressPart.get(size - 3) + "," + addressPart.get(size - 2) + "," + addressPart.get(size - 1);
-                    Log.e(TAG, "addressLine2 " + AddressLine_2);
+                    Log.e(TAG, "addressLine2 ==> " + AddressLine_2);
                     AddressLine2Layout.setVisibility(View.VISIBLE);
                     AddressLine2.setText(AddressLine_2);
-
 
                     for (int i = 5; i <= size; i++) {
                         AddressLine_1 = addressPart.get(size - i) + "," + AddressLine_1;
@@ -297,9 +306,12 @@ public class AddressPicker extends AppCompatActivity {
                     AddressLine1Layout.setVisibility(View.VISIBLE);
                     AddressLine1.setText(String.valueOf(AddressLine_1));
 
+
+                    ShortAddress = addressPart.get(size - 4).replaceFirst(" ", "") + "," + addressPart.get(size - 3);
+
                 } else if (size >= 2) {
                     AddressLine_2 = addressPart.get(size - 2).replaceFirst(" ", "") + "," + addressPart.get(size - 1);
-                    Log.e(TAG, "addressLine2 " + AddressLine_2);
+                    Log.e(TAG, "addressLine2 ==> " + AddressLine_2);
                     AddressLine2Layout.setVisibility(View.VISIBLE);
                     AddressLine2.setText(AddressLine_2);
 
@@ -311,7 +323,11 @@ public class AddressPicker extends AppCompatActivity {
                     }
                     AddressLine1Layout.setVisibility(View.VISIBLE);
                     AddressLine1.setText(String.valueOf(AddressLine_1));
+                    AddressLine1Layout.setBoxStrokeColor(R.color.orange);
+
+                    ShortAddress = addressPart.get(size - 2).replaceFirst(" ", "") + "," + addressPart.get(size - 1);
                 }
+
 
             }
         }
@@ -319,5 +335,22 @@ public class AddressPicker extends AppCompatActivity {
             Log.e("RESULT****", "CANCELLED");
         }
     }
+
+    private void SubmitResult(){
+        FullAddress = AddressLine1.getText()+" "+AddressLine_2;
+        Intent data = new Intent();
+        data.putExtra("Latitude", resultLat);
+        data.putExtra("Longitude", resultLng);
+        data.putExtra("AddressLine1", AddressLine1.getText());
+        data.putExtra("AddressLine2", AddressLine_2);
+        data.putExtra("FullAddress", FullAddress);
+        data.putExtra("ShortAddress", ShortAddress);
+        setResult(RESULT_OK, data);
+        finish();
+    }
+
+
+
+
 
 }

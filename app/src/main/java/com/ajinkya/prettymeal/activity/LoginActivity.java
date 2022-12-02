@@ -3,12 +3,18 @@ package com.ajinkya.prettymeal.activity;
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.helper.widget.MotionEffect;
+import androidx.core.app.ActivityCompat;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -20,8 +26,15 @@ import android.widget.Toast;
 
 import com.ajinkya.prettymeal.R;
 import com.ajinkya.prettymeal.activity.businessAccount.BusinessLoginActivity;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -34,6 +47,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,6 +64,9 @@ public class LoginActivity extends AppCompatActivity {
     private String Email, Password;
     private ProgressDialog progressDialog, loadingBar;
     private FirebaseAuth mAuth;
+    private static final int REQUEST_CHECK_SETTINGS = 0x1;
+    private LocationManager locationManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Initialize();
+        Permissions();
         Buttons();
 
 
@@ -83,6 +102,11 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
 
         mAuth = FirebaseAuth.getInstance();
+
+
+        //location requirements
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
 
     }
 
@@ -259,9 +283,8 @@ public class LoginActivity extends AppCompatActivity {
             private void Login() {
                 if (Objects.requireNonNull(mAuth.getCurrentUser()).isEmailVerified()) {
                     progressDialog.dismiss();
-                    Intent in = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(in);
-                    finish();
+                    GetAddress();
+
                 } else {
                     progressDialog.dismiss();
                     new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.WARNING_TYPE)
@@ -287,7 +310,112 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void VerificationMailResend(String email) {
-
+    private void GetAddress() {
+        Intent intent = new Intent(LoginActivity.this,AddressPicker.class);
+        intent.putExtra("CancelBtnEnable",false);
+        startActivity(intent);
+        startActivityForResult(intent,10);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==10 &&  resultCode==RESULT_OK){
+            if (data!=null){
+
+                // Get data form result ==>
+                double Latitude = data.getExtras().getDouble("Latitude",0.0);
+                double Longitude = data.getExtras().getDouble("Longitude",0.0);
+                String AddressLine1 = data.getExtras().getString("AddressLine1","India");
+                String AddressLine2 = data.getExtras().getString("AddressLine2","India");
+                String FullAddress = data.getExtras().getString("FullAddress","India");
+                String ShortAddress = data.getExtras().getString("ShortAddress","India");
+
+
+                // update firebase database ==>
+                String Current_Uid = FirebaseAuth.getInstance().getUid();
+                assert Current_Uid != null;
+                DatabaseReference userInfoRef = FirebaseDatabase.getInstance().getReference().child("Client_Application").child("Users").child(Current_Uid).child("UserAddress");
+
+                userInfoRef.child("Latitude").setValue(String.valueOf(Latitude));
+                userInfoRef.child("Latitude").setValue(String.valueOf(Longitude));
+                userInfoRef.child("AddressLine1").setValue(AddressLine1);
+                userInfoRef.child("AddressLine2").setValue(AddressLine2);
+                userInfoRef.child("FullAddress").setValue(FullAddress);
+                userInfoRef.child("ShortAddress").setValue(ShortAddress);
+
+                Intent in = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(in);
+                finish();
+
+            }
+        }
+    }
+
+
+
+    private void Permissions() {
+        try {
+            if (ActivityCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+            }else {
+                if (!CheckGpsStatus()){
+                    buttonSwitchGPS_ON();
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private boolean CheckGpsStatus(){
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            Log.e(MotionEffect.TAG, "CheckGpsStatus: Gps Is On" );
+            return true;
+        }
+        else {
+            Log.e(MotionEffect.TAG, "CheckGpsStatus: Gps Is OFF" );
+            return false;
+
+        }
+    }
+    public void buttonSwitchGPS_ON(){
+
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(10000/2);
+
+        LocationSettingsRequest.Builder locationSettingsRequestBuilder = new LocationSettingsRequest.Builder();
+
+        locationSettingsRequestBuilder.addLocationRequest(locationRequest);
+        locationSettingsRequestBuilder.setAlwaysShow(true);
+
+        SettingsClient settingsClient = LocationServices.getSettingsClient(this);
+        Task<LocationSettingsResponse> task = settingsClient.checkLocationSettings(locationSettingsRequestBuilder.build());
+        task.addOnSuccessListener(this, new OnSuccessListener<LocationSettingsResponse>() {
+            @Override
+            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+                Log.e(MotionEffect.TAG, "onSuccess: Location settings (GPS) is ON.");
+            }
+        });
+
+        task.addOnFailureListener(this, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(MotionEffect.TAG, "onSuccess: Location settings (GPS) is OFF.");
+
+                if (e instanceof ResolvableApiException){
+                    try {
+                        ResolvableApiException resolvableApiException = (ResolvableApiException) e;
+                        resolvableApiException.startResolutionForResult(LoginActivity.this,
+                                REQUEST_CHECK_SETTINGS);
+                    } catch (IntentSender.SendIntentException sendIntentException) {
+                        sendIntentException.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
 }
