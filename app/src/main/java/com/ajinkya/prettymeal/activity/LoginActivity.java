@@ -313,7 +313,6 @@ public class LoginActivity extends AppCompatActivity {
     private void GetAddress() {
         Intent intent = new Intent(LoginActivity.this,AddressPicker.class);
         intent.putExtra("CancelBtnEnable",false);
-        startActivity(intent);
         startActivityForResult(intent,10);
     }
 
