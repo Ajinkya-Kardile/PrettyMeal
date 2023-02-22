@@ -37,12 +37,14 @@
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/RegMessNameLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/RegMessName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="name"
@@ -52,12 +54,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/RegMessEmailLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/RegMessEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="emailAddress"
@@ -67,12 +71,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/RegMessPhoneNoLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/RegMessPhoneNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="phone"
@@ -82,28 +88,28 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp">
-
-            <com.google.android.material.textfield.TextInputEditText
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/stroke_bg">
+            <Spinner
+                android:id="@+id/MessTypeSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Mess Type" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
+                android:layout_height="45dp"/>
+        </LinearLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/RegMessDescriptionLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/RegMessDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Mess Description"
@@ -112,7 +118,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/LocationPickerBtn"
+            android:id="@+id/MessLocationPickerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -122,6 +128,7 @@
             app:cornerRadius="15dp" />
 
         <TextView
+            android:id="@+id/RegMessAddressTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -132,7 +139,7 @@
 
 
         <Button
-            android:id="@+id/RegisterBtn"
+            android:id="@+id/businessRegisterBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -140,36 +147,6 @@
             android:paddingHorizontal="60dp"
             android:text="Register"
             app:cornerRadius="15dp" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:text="Already have an account? "
-                android:textColor="@color/blackLite" />
-
-            <TextView
-                android:id="@+id/LoginPageRedirect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:text="Click here Log In"
-                android:textColor="@color/orange" />
-
-        </LinearLayout>
 
 
     </LinearLayout>

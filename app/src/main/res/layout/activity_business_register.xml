@@ -52,12 +52,14 @@
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/BUserNameEditTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/BUserNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="name"
@@ -67,12 +69,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/BUserEmailEditTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/BUserEmailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="emailAddress"
@@ -82,12 +86,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/BUserMobileNoEditTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/BUserMobileNoEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="phone"
@@ -98,6 +104,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/BUserPasswordTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -105,6 +112,7 @@
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/BUserPasswordText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Set Password"
@@ -113,12 +121,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/BUserConformPasswordTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/BUserConformPasswordText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Conform Password"
@@ -129,7 +139,7 @@
 
 
         <Button
-            android:id="@+id/RegisterBtn"
+            android:id="@+id/BRegNextBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -155,7 +165,7 @@
                 android:textColor="@color/blackLite" />
 
             <TextView
-                android:id="@+id/LoginPageRedirect"
+                android:id="@+id/BusinessLoginPageRedirect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

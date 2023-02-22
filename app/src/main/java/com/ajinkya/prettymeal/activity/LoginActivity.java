@@ -337,7 +337,7 @@ public class LoginActivity extends AppCompatActivity {
                 DatabaseReference userInfoRef = FirebaseDatabase.getInstance().getReference().child("Client_Application").child("Users").child(Current_Uid).child("UserAddress");
 
                 userInfoRef.child("Latitude").setValue(String.valueOf(Latitude));
-                userInfoRef.child("Latitude").setValue(String.valueOf(Longitude));
+                userInfoRef.child("Longitude").setValue(String.valueOf(Longitude));
                 userInfoRef.child("AddressLine1").setValue(AddressLine1);
                 userInfoRef.child("AddressLine2").setValue(AddressLine2);
                 userInfoRef.child("FullAddress").setValue(FullAddress);

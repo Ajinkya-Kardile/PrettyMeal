@@ -328,7 +328,6 @@ public class AddressPicker extends AppCompatActivity {
                     ShortAddress = addressPart.get(size - 2).replaceFirst(" ", "") + "," + addressPart.get(size - 1);
                 }
 
-
             }
         }
         if (resultCode == Activity.RESULT_CANCELED) {

@@ -79,6 +79,7 @@
                 android:layout_weight="1"
                 android:text="$60 for one"
                 android:id="@+id/PriceMC"
+                android:gravity="end"
                 android:textAlignment="textEnd"
                 android:textColor="@color/black" />
         </LinearLayout>
@@ -97,6 +98,7 @@
             android:layout_height="wrap_content"
             android:background="#01A707"
             android:paddingHorizontal="5dp"
+            android:gravity="center"
             android:id="@+id/todayVegMenuMC"
             android:text="Dal + Rice + Chapati + Aalu-bhaji + Shimla mirchi + Salad"
             android:textAlignment="center"
@@ -108,6 +110,7 @@
             android:paddingHorizontal="5dp"
             android:id="@+id/todayNonVegMenuMC"
             android:visibility="gone"
+            android:gravity="center"
             android:text="Dal + Rice + Chapati + Chiken kari + Salad"
             android:textAlignment="center"
             android:textColor="@color/white" />

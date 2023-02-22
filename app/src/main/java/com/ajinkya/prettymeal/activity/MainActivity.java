@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                 LocationTextView.setText(ShortAddress);
 
                 userAddressRef.child("Latitude").setValue(String.valueOf(Latitude));
-                userAddressRef.child("Latitude").setValue(String.valueOf(Longitude));
+                userAddressRef.child("Longitude").setValue(String.valueOf(Longitude));
                 userAddressRef.child("AddressLine1").setValue(AddressLine1);
                 userAddressRef.child("AddressLine2").setValue(AddressLine2);
                 userAddressRef.child("FullAddress").setValue(FullAddress);
