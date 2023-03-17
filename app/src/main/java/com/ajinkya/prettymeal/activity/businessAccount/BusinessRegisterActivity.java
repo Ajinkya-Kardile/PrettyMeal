@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ajinkya.prettymeal.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -98,16 +99,18 @@ public class BusinessRegisterActivity extends AppCompatActivity {
                             SignInMethodQueryResult result = task.getResult();
                             List<String> signInMethods = result.getSignInMethods();
                             assert signInMethods != null;
+                            Log.e(TAG, "onComplete: SignIn Methods  ==  "+ signInMethods  );
                             if (signInMethods.contains(EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD)) {
                                 // User can sign in with email/password
                                 Log.e(TAG, "Email Id already used for another account", task.getException());
+                                Toast.makeText(BusinessRegisterActivity.this, "Email Id already used for another account", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
 
+                            }else {
+                                // Go to the next page and pass all the information
+                                progressDialog.dismiss();
+                                PassDataOnNextActivity();
                             }
-                        } else {
-                            // Go to the next page and pass all the information
-                            progressDialog.dismiss();
-                            PassDataOnNextActivity();
                         }
                     }
                 });

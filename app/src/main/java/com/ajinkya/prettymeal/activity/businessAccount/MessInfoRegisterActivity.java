@@ -16,6 +16,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -43,14 +45,16 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class MessInfoRegisterActivity extends AppCompatActivity {
+public class MessInfoRegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button RegisterBtn, AddressPickerBtn;
     private TextInputEditText EtMessName, EtSupportEmail, EtSupportMobileNo, EtMessDescription;
     private TextView MessAddressTextView;
@@ -80,11 +84,13 @@ public class MessInfoRegisterActivity extends AppCompatActivity {
 
 
     private void ExtractInfoFromIntent() {
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         UserName = intent.getStringExtra("UserName");
         UserEmail = intent.getStringExtra("UserEmail");
         UserMobileNo = intent.getStringExtra("UserMobileNo");
         UserPassword = intent.getStringExtra("Password");
+
+        Log.e(TAG, "ExtractInfoFromIntent: " + UserEmail+ "      "+UserPassword );
     }
 
 
@@ -122,9 +128,27 @@ public class MessInfoRegisterActivity extends AppCompatActivity {
 
 
 
+//        set data to spinner
+        MessTypeSpinner.setOnItemSelectedListener(this);
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Pure Veg");
+        categories.add("Veg-NonVeg");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        MessTypeSpinner.setAdapter(dataAdapter);
+
         //location requirements
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
     }
+
+
 
     private void Buttons() {
         RegisterBtn.setOnClickListener(View -> {
@@ -353,11 +377,11 @@ public class MessInfoRegisterActivity extends AppCompatActivity {
         MessDetails.put("Longitude", MessLong);
         MessDetails.put("FullAddress", MessFullAddress);
         MessDetails.put("ShortAddress", MessShortAddress);
-        MessDetails.put("MessName", MessShortAddress);
-        MessDetails.put("MessType", MessShortAddress);
-        MessDetails.put("SupportEmail", MessShortAddress);
-        MessDetails.put("SupportPhoneNo", MessShortAddress);
-        MessDetails.put("MessDesc", MessShortAddress);
+        MessDetails.put("MessName", MessName);
+        MessDetails.put("MessType", MessType);
+        MessDetails.put("SupportEmail", SupportEmail);
+        MessDetails.put("SupportPhoneNo", SupportMobileNo);
+        MessDetails.put("MessDesc", MessDescription);
 
 
         MessInfoRef.setValue(MessDetails).addOnCompleteListener(task -> {
@@ -390,7 +414,17 @@ public class MessInfoRegisterActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        MessType = adapterView.getItemAtPosition(i).toString();
 
+        // Showing selected spinner item
+        Log.e(TAG, "onItemSelected: "+MessType );
+//        Toast.makeText(adapterView.getContext(), "Selected: " + MessType, Toast.LENGTH_LONG).show();
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
 }
