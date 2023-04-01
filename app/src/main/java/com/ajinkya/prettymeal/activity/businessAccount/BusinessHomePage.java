@@ -214,6 +214,14 @@ public class BusinessHomePage extends AppCompatActivity {
             startActivity(intent);
         });
 
+        profile.setOnClickListener(View->{
+            Intent intent = new Intent(BusinessHomePage.this,BusinessProfilePage.class);
+            intent.putExtra("UserName",UserName);
+            intent.putExtra("UserEmail",UserEmail);
+            intent.putExtra("UserMobileNo",UserPhoneNo);
+            startActivity(intent);
+        });
+
         EditMessInfo.setOnClickListener(View -> {
 
             Intent intent = new Intent(BusinessHomePage.this, EditMessInfo.class);
