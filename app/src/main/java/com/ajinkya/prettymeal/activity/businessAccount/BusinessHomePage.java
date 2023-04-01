@@ -104,7 +104,6 @@ public class BusinessHomePage extends AppCompatActivity {
         History = findViewById(R.id.HistoryIcon);
         AboutUs = findViewById(R.id.AboutUsIcon);
         Support = findViewById(R.id.SupportIcon);
-        profileImage = findViewById(R.id.profile_imageBHP);
 
 
         //firebase ==>

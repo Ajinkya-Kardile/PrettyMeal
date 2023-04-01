@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
-        android:layout_marginTop="5dp"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,15 +42,14 @@
             android:textColor="@color/black"
             app:drawableStartCompat="@drawable/ic_gps" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_imageBHP"
+        <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/img_profile"
-            app:civ_border_color="@color/black"
-            app:civ_border_width="2dp" />
+            android:src="@drawable/app_logo"/>
+
+
 
     </RelativeLayout>
 

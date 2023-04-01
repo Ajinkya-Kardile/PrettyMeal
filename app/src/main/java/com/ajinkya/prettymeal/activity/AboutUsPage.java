@@ -22,7 +22,7 @@ public class AboutUsPage extends AppCompatActivity {
         setContentView(R.layout.activity_about_us_page);
 
         Element versionElement = new Element();
-        versionElement.setTitle("Version 6.2");
+        versionElement.setTitle("Version 1.1");
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
