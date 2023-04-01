@@ -5,5 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="plusAsString">+</string>
     <string name="asxsaa">[</string>
+    <string name="copy_right" translatable="false">Copyrights © %1$d</string>
+
 
 </resources>

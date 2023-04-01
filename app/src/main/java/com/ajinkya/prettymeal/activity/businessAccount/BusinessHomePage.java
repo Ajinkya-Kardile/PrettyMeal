@@ -2,9 +2,6 @@ package com.ajinkya.prettymeal.activity.businessAccount;
 
 import static android.content.ContentValues.TAG;
 
-
-import static java.net.Proxy.Type.HTTP;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
@@ -24,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ajinkya.prettymeal.R;
+import com.ajinkya.prettymeal.activity.AboutUsPage;
 import com.ajinkya.prettymeal.model.UserInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -175,7 +173,7 @@ public class BusinessHomePage extends AppCompatActivity {
         MessLocationTV.setText(MessShortAddress);
         bannerMessName.setText(MessName);
         BannerLocation.setText(MessFullAddress);
-        bannerPrice.setText("Rs "+Price+" For Each");
+        bannerPrice.setText("Rs " + Price + " For Each");
 
         if (MessType.equals("PureVeg")) {
             vegImgBanner.setVisibility(View.VISIBLE);
@@ -216,27 +214,32 @@ public class BusinessHomePage extends AppCompatActivity {
             startActivity(intent);
         });
 
-        EditMessInfo.setOnClickListener(View ->{
+        EditMessInfo.setOnClickListener(View -> {
 
             Intent intent = new Intent(BusinessHomePage.this, EditMessInfo.class);
-            intent.putExtra("MessName",MessName);
-            intent.putExtra("SupportMobileNo",SupportPhoneNo);
-            intent.putExtra("SupportEmail",SupportEmail);
-            intent.putExtra("MessType",MessType);
-            intent.putExtra("MessDescription",MessDetails);
-            intent.putExtra("Price",Price);
+            intent.putExtra("MessName", MessName);
+            intent.putExtra("SupportMobileNo", SupportPhoneNo);
+            intent.putExtra("SupportEmail", SupportEmail);
+            intent.putExtra("MessType", MessType);
+            intent.putExtra("MessDescription", MessDetails);
+            intent.putExtra("Price", Price);
             startActivity(intent);
         });
 
 
-        Support.setOnClickListener(View ->{
+        Support.setOnClickListener(View -> {
             Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setType("message/rfc822");
-            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"kardileajinkya@gmail.com"});
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"kardileajinkya@gmail.com"});
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "I Need Support");
             emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello Team PrettyMeal\n");
             startActivity(Intent.createChooser(emailIntent, "Choose an Email client :"));
 
+        });
+
+        AboutUs.setOnClickListener(View -> {
+            Intent intent = new Intent(BusinessHomePage.this, AboutUsPage.class);
+            startActivity(intent);
         });
     }
 

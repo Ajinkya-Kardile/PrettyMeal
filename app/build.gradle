@@ -58,6 +58,8 @@ dependencies {
     implementation 'com.adevinta.android:leku:10.0.2'
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation 'io.github.medyo:android-about-page:2.0.0'
+
 
 
 

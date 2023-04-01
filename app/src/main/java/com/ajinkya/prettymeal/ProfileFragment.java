@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.ajinkya.prettymeal.activity.AboutUsPage;
 import com.ajinkya.prettymeal.activity.LoginActivity;
 import com.ajinkya.prettymeal.model.UserInfo;
 import com.bumptech.glide.Glide;
@@ -24,7 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -33,7 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
 
-    private TextView TvProfileName, TvProfileEmail, TvMobileNo, TvDetailsEmail, TvEditProfile, TvChangePassword, TvAboutUs, TvLogoutBtn;
+    private TextView TvProfileName, TvProfileEmail, TvMobileNo, TvDetailsEmail, TvEditProfile, TvAboutUs, TvLogoutBtn;
     private CircleImageView profileImage;
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
@@ -61,7 +61,6 @@ public class ProfileFragment extends Fragment {
     }
 
 
-
     private void Initialize(View view) {
 
         // TextView & Other View initialize
@@ -71,7 +70,6 @@ public class ProfileFragment extends Fragment {
         TvMobileNo = view.findViewById(R.id.CustomerDetailNumber);
         TvDetailsEmail = view.findViewById(R.id.CustomerDetailEmail);
         TvEditProfile = view.findViewById(R.id.CustomerEditProfile);
-        TvChangePassword = view.findViewById(R.id.CustomerChangePassword);
         TvAboutUs = view.findViewById(R.id.CustomerAboutUs);
         TvLogoutBtn = view.findViewById(R.id.CustomerLogout);
 
@@ -105,8 +103,8 @@ public class ProfileFragment extends Fragment {
             }
 
             private void setValue(UserInfo userInfo) {
-                if (!userInfo.getUserName().isEmpty()){
-                    if (!userInfo.getUserProfileUrl().isEmpty()){
+                if (!userInfo.getUserName().isEmpty()) {
+                    if (!userInfo.getUserProfileUrl().isEmpty()) {
                         Glide.with(requireContext()).load(userInfo.getUserProfileUrl()).into(profileImage);
                     }
                     TvProfileName.setText(userInfo.getUserName());
@@ -124,26 +122,18 @@ public class ProfileFragment extends Fragment {
         });
 
 
-
-
     }
 
 
-
-
-
-
     private void Buttons() {
-        TvEditProfile.setOnClickListener(View ->{
+        TvEditProfile.setOnClickListener(View -> {
 
         });
 
-        TvChangePassword.setOnClickListener(View ->{
 
-        });
-
-        TvAboutUs.setOnClickListener(View ->{
-
+        TvAboutUs.setOnClickListener(View -> {
+            Intent intent = new Intent(getContext(), AboutUsPage.class);
+            startActivity(intent);
         });
 
         TvLogoutBtn.setOnClickListener(View -> {
