@@ -132,7 +132,7 @@ public class MessInfoRegisterActivity extends AppCompatActivity implements Adapt
         MessTypeSpinner.setOnItemSelectedListener(this);
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("Pure Veg");
+        categories.add("PureVeg");
         categories.add("Veg-NonVeg");
 
         // Creating adapter for spinner
@@ -146,6 +146,8 @@ public class MessInfoRegisterActivity extends AppCompatActivity implements Adapt
 
         //location requirements
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+
     }
 
 
@@ -362,7 +364,6 @@ public class MessInfoRegisterActivity extends AppCompatActivity implements Adapt
         user.put("Email", UserEmail);
         user.put("PhoneNo", UserMobileNo);
         user.put("ProfileImg", "");
-        user.put("Membership", "NA");
 
 
 
@@ -382,6 +383,9 @@ public class MessInfoRegisterActivity extends AppCompatActivity implements Adapt
         MessDetails.put("SupportEmail", SupportEmail);
         MessDetails.put("SupportPhoneNo", SupportMobileNo);
         MessDetails.put("MessDesc", MessDescription);
+        MessDetails.put("VegMenu", "NA");
+        MessDetails.put("NonVegMenu", "NA");
+        MessDetails.put("Price", "60");
 
 
         MessInfoRef.setValue(MessDetails).addOnCompleteListener(task -> {
