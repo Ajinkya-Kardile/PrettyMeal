@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.ajinkya.prettymeal.activity.AboutUsPage;
+import com.ajinkya.prettymeal.activity.EditProfileActivity;
 import com.ajinkya.prettymeal.activity.LoginActivity;
 import com.ajinkya.prettymeal.model.UserInfo;
 import com.bumptech.glide.Glide;
@@ -128,6 +129,11 @@ public class ProfileFragment extends Fragment {
     private void Buttons() {
         TvEditProfile.setOnClickListener(View -> {
 
+            Intent intent = new Intent(getContext(), EditProfileActivity.class);
+            intent.putExtra("UserName",userInfo.getUserName());
+            intent.putExtra("UserEmail",userInfo.getUserEmail());
+            intent.putExtra("UserMobileNo",userInfo.getUserMobileNo());
+            startActivity(intent);
         });
 
 
