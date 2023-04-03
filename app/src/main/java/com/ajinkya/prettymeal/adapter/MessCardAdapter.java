@@ -52,25 +52,21 @@ public class MessCardAdapter extends RecyclerView.Adapter<MessCardAdapter.ViewHo
     public void onBindViewHolder(@NonNull MessCardAdapter.ViewHolder holder, int position) {
         MessInfo messInfo = mList.get(position);
         holder.messName.setText(messInfo.getMessName());
-        holder.location.setText(messInfo.getMessLocation());
-        holder.price.setText(messInfo.getPrice()+" for one");
+        holder.location.setText(messInfo.getMessAddress());
+        holder.price.setText("Rs "+ messInfo.getPrice()+" For One");
         holder.vegMenu.setText(messInfo.getTodayVegMenu());
 
         //If non-veg Menu is available then show here
-        if (!messInfo.getTodayNonVegMenu().equals("NA")) {
+        if (!messInfo.getMessType().equals("PureVeg")) {
             holder.nonVegMenu.setVisibility(View.VISIBLE);
             holder.nonVegMenu.setText(messInfo.getTodayNonVegMenu());
         }
 
 
-        if (messInfo.getVeg_nonVeg().equals("PureVeg")) {
+        if (messInfo.getMessType().equals("PureVeg")) {
             holder.veg_nonVegImg.setVisibility(View.GONE);
             holder.vegImg.setVisibility(View.VISIBLE);
-        } else if (messInfo.getVeg_nonVeg().equals("NonVeg")) {
-            holder.veg_nonVegImg.setVisibility(View.GONE);
-            holder.vegImg.setVisibility(View.VISIBLE);
-            holder.vegImg.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_non_veg));
-        } else {
+        }  else {
             holder.veg_nonVegImg.setVisibility(View.VISIBLE);
             holder.vegImg.setVisibility(View.GONE);
         }
@@ -87,10 +83,16 @@ public class MessCardAdapter extends RecyclerView.Adapter<MessCardAdapter.ViewHo
 
         holder.messCard.setOnClickListener(View ->{
             Intent intent = new Intent(context, MessDetailsActivity.class);
+            intent.putExtra("MessName",messInfo.getMessName());
+            intent.putExtra("MessDesc",messInfo.getMessDescription());
+            intent.putExtra("MessAddress",messInfo.getMessAddress());
+            intent.putExtra("MessLat",messInfo.getMessLat());
+            intent.putExtra("MessLong",messInfo.getMessLong());
+            intent.putExtra("MessType",messInfo.getMessType());
             intent.putExtra("VegMenu",messInfo.getTodayVegMenu());
-            if (messInfo.getTodayNonVegMenu().equals("NA")){
-                intent.putExtra("NonVegMenu","");
-            }else intent.putExtra("NonVegMenu",messInfo.getTodayNonVegMenu());
+            intent.putExtra("NonVegMenu",messInfo.getTodayNonVegMenu());
+            intent.putExtra("SupportMail",messInfo.getSupportMail());
+            intent.putExtra("SupportPhoneNo",messInfo.getSupportPhoneNo());
             context.startActivity(intent);
 
         });

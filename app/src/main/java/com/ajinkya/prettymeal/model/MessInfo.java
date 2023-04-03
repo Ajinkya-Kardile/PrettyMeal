@@ -4,12 +4,57 @@ public class MessInfo {
     private String messName;
     private String messOwnerName;
     private String PhoneNo;
-    private String messLocation;
-    private String veg_nonVeg;
+    private String messAddress;
+    private String MessLat;
+    private String MessLong;
+    private String MessDescription;
+    private String SupportMail;
+    private String SupportPhoneNo;
+    private String MessType;
     private String todayVegMenu;
     private String todayNonVegMenu;
     private String price;
     private String bannerImgURL;
+
+    public String getMessLat() {
+        return MessLat;
+    }
+
+    public void setMessLat(String messLat) {
+        MessLat = messLat;
+    }
+
+    public String getMessLong() {
+        return MessLong;
+    }
+
+    public void setMessLong(String messLong) {
+        MessLong = messLong;
+    }
+
+    public String getMessDescription() {
+        return MessDescription;
+    }
+
+    public void setMessDescription(String messDescription) {
+        MessDescription = messDescription;
+    }
+
+    public String getSupportMail() {
+        return SupportMail;
+    }
+
+    public void setSupportMail(String supportMail) {
+        SupportMail = supportMail;
+    }
+
+    public String getSupportPhoneNo() {
+        return SupportPhoneNo;
+    }
+
+    public void setSupportPhoneNo(String supportPhoneNo) {
+        SupportPhoneNo = supportPhoneNo;
+    }
 
 
     public String getMessName() {
@@ -36,20 +81,20 @@ public class MessInfo {
         PhoneNo = phoneNo;
     }
 
-    public String getMessLocation() {
-        return messLocation;
+    public String getMessAddress() {
+        return messAddress;
     }
 
-    public void setMessLocation(String messLocation) {
-        this.messLocation = messLocation;
+    public void setMessAddress(String messAddress) {
+        this.messAddress = messAddress;
     }
 
-    public String getVeg_nonVeg() {
-        return veg_nonVeg;
+    public String getMessType() {
+        return MessType;
     }
 
-    public void setVeg_nonVeg(String veg_nonVeg) {
-        this.veg_nonVeg = veg_nonVeg;
+    public void setMessType(String messType) {
+        this.MessType = messType;
     }
 
     public String getTodayVegMenu() {

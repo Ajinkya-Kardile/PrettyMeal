@@ -17,46 +17,44 @@
             android:orientation="vertical">
 
 
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="350dp">
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
-                    android:background="@color/orange"/>
+                    android:background="@color/orange" />
 
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/MessImagesSlider"
                     android:layout_width="544dp"
                     android:layout_height="306dp"
-                    app:iss_auto_cycle="true"
-                    app:iss_corner_radius="40"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="40dp"
+                    app:cornerRadius="18dp"
+                    app:iss_auto_cycle="true"
+                    app:iss_corner_radius="40"
                     app:iss_delay="0"
-                    android:layout_marginHorizontal="20dp"
                     app:iss_error_image="@color/purple_500"
                     app:iss_period="3000"
-                    app:iss_placeholder="@color/orange"
-                    app:cornerRadius="18dp"
-                    />
+                    app:iss_placeholder="@color/orange" />
 
                 <ImageButton
                     android:id="@+id/profile_image"
+                    style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    app:cornerRadius="10dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
-                    android:foreground="?attr/selectableItemBackground"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/ic_back_button"
-                    android:contentDescription="TODO" />
+                    android:clickable="true"
+                    android:contentDescription="TODO"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cornerRadius="10dp" />
             </RelativeLayout>
-
 
 
             <androidx.cardview.widget.CardView
@@ -86,10 +84,10 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/MessDetailsMD"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:id="@+id/MessDetailsMD"
                         android:text="A Hotel Meal Magic is only as good as its ingredients. That's why we import our spices and use top-quality ingredients in each of our Nashville Hot Chicken tenders, as well as our other offerings."
                         android:textColor="@color/black"
                         android:textSize="15sp" />
@@ -99,7 +97,7 @@
                         android:layout_height="1dp"
                         android:layout_marginVertical="15dp"
                         android:background="@color/grey_font"
-                        android:elevation="5dp"/>
+                        android:elevation="5dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -112,29 +110,30 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/MessAddressMD"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:id="@+id/MessAddressMD"
                         android:text="Hotel Meal Magic,Opposite of Raisoni College, Wagholi, Pune-412207"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
                     <Button
+                        android:id="@+id/LocateOnMapBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:drawableRight="@drawable/ic_map"
                         android:text="Locate on map"
-                        app:cornerRadius="18dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:cornerRadius="18dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginVertical="15dp"
-                        android:elevation="5dp"
-                        android:background="@color/grey_font" />
+                        android:background="@color/grey_font"
+                        android:elevation="5dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -177,10 +176,10 @@
 
 
                     <LinearLayout
+                        android:id="@+id/NonVegMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:id="@+id/NonVegMenu"
                         android:visibility="visible">
 
                         <RelativeLayout
@@ -213,20 +212,21 @@
 
 
                     <Button
+                        android:id="@+id/CollectMealBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:drawableRight="@drawable/ic_restaurant"
                         android:text="Collect Your Meal"
-                        app:cornerRadius="18dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:cornerRadius="18dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginVertical="15dp"
-                        android:elevation="5dp"
-                        android:background="@color/grey_font" />
+                        android:background="@color/grey_font"
+                        android:elevation="5dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -238,37 +238,26 @@
                         android:textStyle="bold"
                         app:drawableStartCompat="@drawable/ic_contact_support" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="25dp"
-                        android:layout_marginVertical="5dp"
-                        android:drawablePadding="3dp"
-                        android:id="@+id/MessOwnerName"
-                        android:text="Ajinkya Kardile"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:drawableStartCompat="@drawable/ic_profile" />
 
                     <TextView
+                        android:id="@+id/MessPhoneNo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="25dp"
                         android:layout_marginVertical="5dp"
                         android:drawablePadding="3dp"
-                        android:id="@+id/MessPhoneNo"
                         android:text="8308679079"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:drawableStartCompat="@drawable/ic_phone" />
 
                     <TextView
+                        android:id="@+id/MessEmailAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="25dp"
                         android:layout_marginVertical="5dp"
                         android:drawablePadding="3dp"
-                        android:id="@+id/MessEmailAddress"
                         android:text="meal_magic@support.com"
                         android:textColor="@color/black"
                         android:textSize="16sp"
