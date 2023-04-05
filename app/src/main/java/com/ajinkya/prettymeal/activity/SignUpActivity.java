@@ -194,12 +194,10 @@ public class SignUpActivity extends AppCompatActivity {
         user.put("PhoneNo", mobileNo);
         user.put("ProfileImg", "");
         user.put("Membership", "NA");
-//        user.put("Latitude","");
-//        user.put("Longitude","");
-//        user.put("AddressLine1","");
-//        user.put("AddressLine2","");
-//        user.put("FullAddress","");
-//        user.put("ShortAddress","");
+        user.put("MealsLeft", "0");
+        user.put("TotalMeals", "0");
+        user.put("PlanStartDate", "NA");
+
 
         userInfoReference.setValue(user).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

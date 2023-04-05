@@ -15,4 +15,6 @@
     <color name="blackLite">#272D2F</color>
     <color name="grey_font">#656565</color>
     <color name="whiteLite">#D7D7D7</color>
+    <color name="silver">#808080</color>
+    <color name="Gold">#FFD700</color>
 </resources>
