@@ -135,5 +135,14 @@ public class MessDetailsActivity extends AppCompatActivity {
         backButton.setOnClickListener(View -> {
             onBackPressed();
         });
+
+        LocateOnMapBtn.setOnClickListener(View->{
+            Intent intent = new Intent(MessDetailsActivity.this, MapActivity.class);
+            intent.putExtra("MessLat", MessLat);
+            intent.putExtra("MessLong", MessLong);
+            intent.putExtra("MessName", MessName);
+            startActivity(intent);
+        });
+
     }
 }
