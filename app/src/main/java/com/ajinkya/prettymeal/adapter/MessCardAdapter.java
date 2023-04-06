@@ -93,6 +93,7 @@ public class MessCardAdapter extends RecyclerView.Adapter<MessCardAdapter.ViewHo
             intent.putExtra("NonVegMenu",messInfo.getTodayNonVegMenu());
             intent.putExtra("SupportMail",messInfo.getSupportMail());
             intent.putExtra("SupportPhoneNo",messInfo.getSupportPhoneNo());
+            intent.putExtra("MessUID",messInfo.getMessUID());
             context.startActivity(intent);
 
         });

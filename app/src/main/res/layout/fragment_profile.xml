@@ -125,6 +125,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/ProfileHistoryCardView"
                     android:layout_width="110dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"

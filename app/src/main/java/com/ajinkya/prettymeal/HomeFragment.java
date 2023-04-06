@@ -91,6 +91,7 @@ public class HomeFragment extends Fragment {
                         String SupportPhoneNo = Objects.requireNonNull(snapshot.child(key).child("MessDetails").child("SupportPhoneNo").getValue()).toString();
                         String VegMenu = Objects.requireNonNull(snapshot.child(key).child("MessDetails").child("VegMenu").getValue()).toString();
                         String NonVegMenu = Objects.requireNonNull(snapshot.child(key).child("MessDetails").child("NonVegMenu").getValue()).toString();
+                        String MessUID = Objects.requireNonNull(snapshot.child(key).child("MessDetails").child("MessUID").getValue()).toString();
 
                         MessInfo messInfo = new MessInfo();
                         messInfo.setMessName(MessName);
@@ -105,6 +106,7 @@ public class HomeFragment extends Fragment {
                         messInfo.setTodayVegMenu(VegMenu);
                         messInfo.setTodayNonVegMenu(NonVegMenu);
                         messInfo.setBannerImgURL("");
+                        messInfo.setMessUID(MessUID);
                         messInfoArrayList.add(messInfo);
                     }
 

@@ -351,6 +351,14 @@ public class MessInfoRegisterActivity extends AppCompatActivity implements Adapt
         assert currentUser != null;
         String Current_Uid = currentUser.getUid();
 
+        //Create another data childes
+        DatabaseReference MessOwnerHistory = FirebaseDatabase.getInstance().getReference().child("Business_Application").child("Users").child(Current_Uid).child("History");
+        DatabaseReference MessWalletRef = FirebaseDatabase.getInstance().getReference().child("Business_Application").child("Users").child(Current_Uid).child("WalletInfo");
+        HashMap<String, String> data = new HashMap<>();
+        data.put("WalletBalance", "0");
+        data.put("TotalPlatesConsumed", "0");
+        MessWalletRef.setValue(data);
+
         // Store user type in database
         DatabaseReference UserTypeReference = FirebaseDatabase.getInstance().getReference().child("UserType");
         UserTypeReference.child(Current_Uid).setValue("MessOwner");
@@ -364,9 +372,6 @@ public class MessInfoRegisterActivity extends AppCompatActivity implements Adapt
         user.put("Email", UserEmail);
         user.put("PhoneNo", UserMobileNo);
         user.put("ProfileImg", "");
-
-
-
         userInfoReference.setValue(user);
 
 
@@ -386,7 +391,7 @@ public class MessInfoRegisterActivity extends AppCompatActivity implements Adapt
         MessDetails.put("VegMenu", "NA");
         MessDetails.put("NonVegMenu", "NA");
         MessDetails.put("Price", "60");
-
+        MessDetails.put("MessUID", Current_Uid);
 
         MessInfoRef.setValue(MessDetails).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

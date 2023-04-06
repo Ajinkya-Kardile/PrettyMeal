@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.ajinkya.prettymeal.activity.ClientHistoryActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -109,9 +110,6 @@ public class WalletFragment extends Fragment {
             TotalPlatesTv.setText("0");
             StartDateTv.setText("NA");
 
-            if (!Membership.equals("NA")){
-                UserInfoRef.child("Membership").setValue("NA");
-            }
         }
     }
 
@@ -146,7 +144,8 @@ public class WalletFragment extends Fragment {
 
 
         ViewHistoryBtn.setOnClickListener(View -> {
-
+            Intent intent = new Intent(getContext(), ClientHistoryActivity.class);
+            startActivity(intent);
         });
 
         Plan1Layout.setOnClickListener(View -> {

@@ -11,9 +11,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.ajinkya.prettymeal.activity.AboutUsPage;
+import com.ajinkya.prettymeal.activity.ClientHistoryActivity;
 import com.ajinkya.prettymeal.activity.EditProfileActivity;
 import com.ajinkya.prettymeal.activity.LoginActivity;
 import com.ajinkya.prettymeal.model.UserInfo;
@@ -41,6 +43,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private String UserUid;
     private UserInfo userInfo;
+    private CardView HistoryBtn;
 
 
     @Override
@@ -73,6 +76,9 @@ public class ProfileFragment extends Fragment {
         TvEditProfile = view.findViewById(R.id.CustomerEditProfile);
         TvAboutUs = view.findViewById(R.id.CustomerAboutUs);
         TvLogoutBtn = view.findViewById(R.id.CustomerLogout);
+
+
+        HistoryBtn = view.findViewById(R.id.ProfileHistoryCardView);
 
         // Firebase requirement initialize
         auth = FirebaseAuth.getInstance();
@@ -144,6 +150,11 @@ public class ProfileFragment extends Fragment {
 
         TvLogoutBtn.setOnClickListener(View -> {
             LogoutUser();
+        });
+
+        HistoryBtn.setOnClickListener(View->{
+            Intent intent = new Intent(getContext(), ClientHistoryActivity.class);
+            startActivity(intent);
         });
     }
 

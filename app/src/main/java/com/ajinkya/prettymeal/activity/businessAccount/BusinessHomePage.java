@@ -190,6 +190,7 @@ public class BusinessHomePage extends AppCompatActivity {
 
         if (!MessType.equals("PureVeg")) {
             BannerNonVegMenu.setText(NonVegMenu);
+            BannerNonVegMenu.setVisibility(View.VISIBLE);
 
             NonVegMenuHeading.setVisibility(View.VISIBLE);
             NonVegMenuRecyclerView.setVisibility(View.VISIBLE);
@@ -207,17 +208,21 @@ public class BusinessHomePage extends AppCompatActivity {
     }
 
     private void Buttons() {
+        Wallet.setOnClickListener(View -> {
+
+        });
+
         EditMenu.setOnClickListener(View -> {
             Intent intent = new Intent(BusinessHomePage.this, EditMessMenuActivity.class);
             intent.putExtra("MessType", MessType);
             startActivity(intent);
         });
 
-        profile.setOnClickListener(View->{
-            Intent intent = new Intent(BusinessHomePage.this,BusinessProfilePage.class);
-            intent.putExtra("UserName",UserName);
-            intent.putExtra("UserEmail",UserEmail);
-            intent.putExtra("UserMobileNo",UserPhoneNo);
+        profile.setOnClickListener(View -> {
+            Intent intent = new Intent(BusinessHomePage.this, BusinessProfilePage.class);
+            intent.putExtra("UserName", UserName);
+            intent.putExtra("UserEmail", UserEmail);
+            intent.putExtra("UserMobileNo", UserPhoneNo);
             startActivity(intent);
         });
 
@@ -233,6 +238,10 @@ public class BusinessHomePage extends AppCompatActivity {
             startActivity(intent);
         });
 
+        History.setOnClickListener(View -> {
+            Intent intent = new Intent(BusinessHomePage.this, BusinessHistoryActivity.class);
+            startActivity(intent);
+        });
 
         Support.setOnClickListener(View -> {
             Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -249,5 +258,4 @@ public class BusinessHomePage extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
 }

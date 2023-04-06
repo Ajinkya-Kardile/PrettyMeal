@@ -16,6 +16,16 @@ public class MessInfo {
     private String price;
     private String bannerImgURL;
 
+    public String getMessUID() {
+        return MessUID;
+    }
+
+    public void setMessUID(String messUID) {
+        MessUID = messUID;
+    }
+
+    private String MessUID;
+
     public String getMessLat() {
         return MessLat;
     }
