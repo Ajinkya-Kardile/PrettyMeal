@@ -57,6 +57,7 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/checkBalance"
                     android:layout_width="110dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"

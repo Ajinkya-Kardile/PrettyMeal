@@ -43,7 +43,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private String UserUid;
     private UserInfo userInfo;
-    private CardView HistoryBtn;
+    private CardView HistoryBtn, checkBalance;
 
 
     @Override
@@ -79,6 +79,7 @@ public class ProfileFragment extends Fragment {
 
 
         HistoryBtn = view.findViewById(R.id.ProfileHistoryCardView);
+        checkBalance = view.findViewById(R.id.checkBalance);
 
         // Firebase requirement initialize
         auth = FirebaseAuth.getInstance();
@@ -156,6 +157,8 @@ public class ProfileFragment extends Fragment {
             Intent intent = new Intent(getContext(), ClientHistoryActivity.class);
             startActivity(intent);
         });
+
+
     }
 
 

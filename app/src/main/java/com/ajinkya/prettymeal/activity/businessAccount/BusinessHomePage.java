@@ -209,7 +209,8 @@ public class BusinessHomePage extends AppCompatActivity {
 
     private void Buttons() {
         Wallet.setOnClickListener(View -> {
-
+            Intent intent = new Intent(BusinessHomePage.this, BusinessWalletActivity.class);
+            startActivity(intent);
         });
 
         EditMenu.setOnClickListener(View -> {
